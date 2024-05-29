@@ -1,38 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/constants.dart';
-import 'package:shop_app/size_config.dart';
 
-class SplashContent extends StatelessWidget {
+import '../../../constants.dart';
+
+class SplashContent extends StatefulWidget {
   const SplashContent({
-    super.key,
-    required this.text,
-    required this.image,
-  });
+    Key? key,
+    this.text,
+    this.image,
+  }) : super(key: key);
+  final String? text, image;
 
-  final String text, image;
+  @override
+  State<SplashContent> createState() => _SplashContentState();
+}
 
+class _SplashContentState extends State<SplashContent> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        Spacer(),
-        Text(
+      children: <Widget>[
+        const Spacer(),
+        const Text(
           "TOKOTO",
           style: TextStyle(
-            fontSize: getProportionateScreenWidth(36),
+            fontSize: 32,
             color: kPrimaryColor,
             fontWeight: FontWeight.bold,
           ),
         ),
         Text(
-          text,
+          widget.text!,
           textAlign: TextAlign.center,
         ),
-        Spacer(flex: 2),
+        const Spacer(flex: 2),
         Image.asset(
-          image,
-          height: getProportionateScreenHeight(265),
-          width: getProportionateScreenWidth(235),
+          widget.image!,
+          height: 265,
+          width: 235,
         ),
       ],
     );

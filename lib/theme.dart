@@ -1,51 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:shop_app/constants.dart';
 
-ThemeData theme() {
-  return ThemeData(
-    scaffoldBackgroundColor: Colors.white,
-    fontFamily: "Muli",
-    appBarTheme: appBarTheme(),
-    textTheme: textTheme(),
-    inputDecorationTheme: inputDecorationTheme(),
-    visualDensity: VisualDensity.adaptivePlatformDensity,
-  );
+import 'constants.dart';
+
+class AppTheme {
+  static ThemeData lightTheme(BuildContext context) {
+    return ThemeData(
+      scaffoldBackgroundColor: Colors.white,
+      fontFamily: "Muli",
+      appBarTheme: const AppBarTheme(
+          color: Colors.white,
+          elevation: 0,
+          iconTheme: IconThemeData(color: Colors.black),
+          titleTextStyle: TextStyle(color: Colors.black)),
+      textTheme: const TextTheme(
+        bodyLarge: TextStyle(color: kTextColor),
+        bodyMedium: TextStyle(color: kTextColor),
+        bodySmall: TextStyle(color: kTextColor),
+      ),
+      inputDecorationTheme: const InputDecorationTheme(
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 20),
+        enabledBorder: outlineInputBorder,
+        focusedBorder: outlineInputBorder,
+        border: outlineInputBorder,
+      ),
+      visualDensity: VisualDensity.adaptivePlatformDensity,
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          elevation: 0,
+          backgroundColor: kPrimaryColor,
+          foregroundColor: Colors.white,
+          minimumSize: const Size(double.infinity, 48),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(16)),
+          ),
+        ),
+      ),
+    );
+  }
 }
 
-InputDecorationTheme inputDecorationTheme() {
-  OutlineInputBorder outlineInputBorder = OutlineInputBorder(
-    borderRadius: BorderRadius.circular(28),
-    borderSide: BorderSide(color: kTextColor),
-    gapPadding: 10,
-  );
-  return InputDecorationTheme(
-    //
-    //
-    floatingLabelBehavior: FloatingLabelBehavior.always,
-    contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 20),
-    enabledBorder: outlineInputBorder,
-    focusedBorder: outlineInputBorder,
-    border: outlineInputBorder,
-  );
-}
-
-TextTheme textTheme() {
-  return TextTheme(
-    bodyText1: TextStyle(color: kTextColor),
-    bodyText2: TextStyle(color: kTextColor),
-  );
-}
-
-AppBarTheme appBarTheme() {
-  return AppBarTheme(
-    color: Colors.white,
-    elevation: 0,
-    systemOverlayStyle: SystemUiOverlayStyle.dark, // Reemplazar brightness
-    iconTheme: IconThemeData(color: Colors.black),
-    titleTextStyle: TextStyle(
-      color: Color(0xFF8B8B8B),
-      fontSize: 18,
-    ), // Establecer el estilo del título de AppBar
-  );
-}
+const OutlineInputBorder outlineInputBorder = OutlineInputBorder(
+  borderRadius: BorderRadius.all(Radius.circular(28)),
+  borderSide: BorderSide(color: kTextColor),
+  gapPadding: 10,
+);
