@@ -31,7 +31,10 @@ class _InitScreenState extends State<InitScreen> {
     const Center(
       child: Text("Chat"),
     ),
-    const ProfileScreen()
+    const ProfileScreen(),
+    const Center(
+      child: Text("PRUEBA"),
+    ),
   ];
 
   @override
@@ -112,6 +115,23 @@ class _InitScreenState extends State<InitScreen> {
               ),
             ),
             label: "Fav",
+          ),
+            BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              "assets/icons/Phone.svg",
+              colorFilter: const ColorFilter.mode(
+                inActiveIconColor,
+                BlendMode.srcIn,
+              ),
+            ),
+            activeIcon: SvgPicture.asset(
+              "assets/icons/Phone.svg",
+              colorFilter: const ColorFilter.mode(
+                kPrimaryColor,
+                BlendMode.srcIn,
+              ),
+            ),
+            label: "prueba",
           ),
         ],
       ),
